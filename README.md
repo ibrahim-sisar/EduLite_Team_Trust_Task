@@ -31,7 +31,6 @@ Go to the folder that matches your role:
 ├── frontend/
 ├── backend/
 ├── ui-ux/
-├── qa/
 └── design/
 ```
 
