@@ -48,7 +48,7 @@ Inside your folder, you will find:
 
 ## 📋 Where to track tasks?
 
-- Open the **Projects tab** to view current tasks and progress: [GitHub Projects](https://github.com/ibrahim-sisar/EduLite_Team_Trust_Task/projects)
+- Open the **Projects tab** to view current tasks and progress: [GitHub Projects](https://github.com/users/ibrahim-sisar/projects/5)
 - Or check the **Issues tab** to see your assigned task: [GitHub Issues](https://github.com/ibrahim-sisar/EduLite_Team_Trust_Task/issues)
 
 ---
