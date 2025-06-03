@@ -1,5 +1,5 @@
 ---
-name: edulite time
+name: frontend edulite tame trust task
 about: For new edulite members
 title: ''
 labels: ''
