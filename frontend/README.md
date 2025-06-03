@@ -39,7 +39,7 @@ You must use:
 
 The API you will be working with is already deployed and documented.
 
-👉 **[View API Documentation Here](https://your-api-doc-link.com)**
+👉 **[View API Documentation Here](https://github.com/ibrahim-sisar/EduLite_Team_Trust_Task/blob/main/frontend/API_DOCUMENTATION.md)**
 
 - The API supports all CRUD operations.
 - You do **not** need to implement login or authentication.
