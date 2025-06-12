@@ -8,12 +8,7 @@ export interface BookState {
     price: number
 }
 
-const initialState: BookState[] = [{
-    id: 123,
-    name: "Book1",
-    description: "Description 1",
-    price: 1000
-}]
+const initialState: BookState[] = []
 
 export const bookSlice = createSlice({
     name: 'book',
