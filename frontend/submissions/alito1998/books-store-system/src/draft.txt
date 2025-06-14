@@ -1,0 +1,87 @@
+/*{removeBook: (state, action: PayloadAction<number>) => {
+            return state.filter((ele)=>ele.id !== action.payload);
+        },
+        addBook: (state,action: PayloadAction<BookState>) => {
+            state.push(action.payload);
+        },
+        updateBook: (state, action: PayloadAction<BookState>) => {
+            const book = state.find((ele) => ele.id === action.payload.id);
+            if (book) {
+                book.name = action.payload.name;
+                book.description = action.payload.description;
+                book.price = action.payload.price;
+            }
+        }}*/
+
+
+
+        /*{removeBook: (state, action: PayloadAction<number>) => {
+                    return state.filter((ele)=>ele.id !== action.payload);
+                },
+                addBook: (state,action: PayloadAction<BookState>) => {
+                    state.push(action.payload);
+                },
+                updateBook: (state, action: PayloadAction<BookState>) => {
+                    const book = state.find((ele) => ele.id === action.payload.id);
+                    if (book) {
+                        book.name = action.payload.name;
+                        book.description = action.payload.description;
+                        book.price = action.payload.price;
+                    }
+                }}*/
+
+
+
+
+export const getBooks = createAsyncThunk('books/getBooks', async (_, ThunkAPI) => {
+    const { rejectWithValue } = ThunkAPI;
+    try {
+        const response = await axios.get('/api/items');
+        return response.data;
+    } catch (error) {
+        return rejectWithValue(error.message);
+    }
+});
+
+export const addBook = createAsyncThunk('Books/addBook', async ( _ , ThunkAPI) => {
+    const { rejectWithValue } = ThunkAPI;
+    try {
+        const response = await axios.post('/api/items', Book);
+        return response.data;
+    } catch (error) {
+        return rejectWithValue(error.massage);
+    }
+});
+
+export const deleteBook = createAsyncThunk('Books/deleteBook', async (id, ThunkAPI) => {
+    const { rejectWithValue } = ThunkAPI;
+    try {
+        await axios.delete(`/api/items/${id}`);
+        return id;
+    } catch (error) {
+        return rejectWithValue(error.massage);
+    }
+});
+
+export const updateBook = createAsyncThunk('Books/updateBook', async (Book, ThunkAPI) => {
+    const { rejectWithValue } = ThunkAPI;
+    try {
+        const response = await axios.put(`/api/items/${Book.id}`, Book);
+        return response.data;
+    } catch (error) {
+        return rejectWithValue(error.message);
+    }
+});
+
+
+//export const { addBook , removeBook , updateBook } = bookSlice.actions
+
+
+
+<button
+                data-tooltip-target="tooltip-top"
+                data-tooltip-placement="top"
+                type="button"
+                className="bg-gray-500 hover:bg-gray-600 text-white font-bold p-2  rounded-full shadow-lg">
+                <AddBookIcon/>
+            </button>
