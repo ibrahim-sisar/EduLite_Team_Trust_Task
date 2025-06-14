@@ -1,0 +1,42 @@
+/* 
+This file contains CSS fixes for the Right-to-Left (RTL) layout in the Django admin,
+specifically for the Jazzmin theme when using Arabic language.
+*/
+
+/* Selects the page when the direction is Right-to-Left */
+[dir="rtl"] {
+    /* Fixes the sidebar overlapping the main content */
+    .content-wrapper {
+        margin-left: 0 !important;
+        margin-right: 250px !important; /* Adjust this value to match your sidebar width */
+    }
+
+    /* Aligns the text in the sidebar menu to the right */
+    .nav-sidebar .nav-item .nav-link p {
+        text-align: right;
+    }
+
+    /* Ensures the sidebar itself is correctly positioned */
+    .main-sidebar {
+        left: auto;
+        right: 0;
+    }
+
+    /* --- Navbar Fixes for RTL -- */
+
+    /*
+      Force the main navbar to reverse its content.
+      This moves the sidebar toggle to the right and the user/language menu to the left.
+    */
+    .main-header.navbar {
+        flex-direction: row-reverse !important;
+    }
+
+    /*
+      The user/language menu items also need to be reversed to appear correctly.
+      This targets the container for the right-hand side of the navbar.
+    */
+    .main-header .navbar-nav.ml-auto {
+        flex-direction: row-reverse !important;
+    }
+}

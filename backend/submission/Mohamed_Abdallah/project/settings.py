@@ -33,6 +33,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'jazzmin',
+    'modeltranslation',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -41,9 +42,10 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
 
-
+    'rosetta',
     
-    'patient'
+    'patient',
+    'translate',
 ]
 
 MIDDLEWARE = [
@@ -113,10 +115,26 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en'
 
-LANGUAGES = [
-    ('en', _('English')),
-    ('ar', _('Arabic')),
-]
+# The LANGUAGES setting is now dynamically loaded from the database.
+# This list serves as a fallback if the database is not yet available (e.g., during initial migrations).
+# LANGUAGES = [
+#     ('en', _('English')),
+#     ('ar', _('Arabic')),
+# ]
+
+try:
+    # We must import the model here, inside the try block, to prevent
+    # errors when the app registry is not yet fully loaded.
+    from translate.models import Language
+    db_languages = Language.objects.filter(is_active=True).values_list('code', 'name')
+
+    # If the query returns any languages, overwrite the default list.
+    if db_languages.exists():
+        LANGUAGES = [(code, _(name)) for code, name in db_languages]
+except Exception:
+    # This will fail during the first migration (before the Language table exists).
+    # It's safe to ignore and fall back to the default LANGUAGES list above.
+    pass
 
 LOCALE_PATHS = [
     BASE_DIR / 'locale',
@@ -133,6 +151,14 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
 STATIC_URL = 'static/'
+
+# The absolute path to the directory where collectstatic will collect static files for deployment.
+STATIC_ROOT = BASE_DIR / 'staticfiles'
+
+# Add our new static directory to the list of places Django will look for static files.
+STATICFILES_DIRS = [
+    BASE_DIR / "static",
+]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
@@ -156,6 +182,8 @@ JAZZMIN_SETTINGS = {
         # App with dropdown menu to all its models pages (Permissions checked against models)
         {"app": "patient"},
     ],
-    "show_ui_builder": True,
-    "language_chooser": True,   
+    "language_chooser": True,
+
+    # Point to our custom CSS file to fix RTL layout issues.
+    "custom_css": "css/rtl_fix.css",
 }

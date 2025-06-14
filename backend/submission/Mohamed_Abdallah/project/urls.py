@@ -16,8 +16,17 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.conf.urls.i18n import i18n_patterns
 
+# This URL pattern is for the language switcher and should not be prefixed with a language code.
+# It provides the 'set_language' view that Jazzmin's language chooser needs.
 urlpatterns = [
+    path('i18n/', include('django.conf.urls.i18n')),
+    path('rosetta/', include('rosetta.urls')),
+]
+
+# These patterns will be prefixed with the language code (e.g., /en/admin, /ar/admin)
+urlpatterns += i18n_patterns(
     path('admin/', admin.site.urls),
     path('api/', include('patient.urls')),
-]
+)
