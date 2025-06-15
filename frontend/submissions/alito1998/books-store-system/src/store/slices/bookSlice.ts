@@ -10,8 +10,9 @@ export const getBooks = createAsyncThunk(
         } catch (err) {
             if (axios.isAxiosError(err)) {
                 return rejectWithValue(err.response?.data);
+            }else {
+                return rejectWithValue({message: 'An unexpected error occurred'});
             }
-            return rejectWithValue({ message: 'An unexpected error occurred' });
         }
     }
 );
@@ -71,7 +72,10 @@ export interface BookUnit {
 export interface BookState {
     books: BookUnit[];
     pending: boolean;
-    error: string|null;
+    error: {
+        payload?: {}
+        massage:string,
+    }|null;
 }
 
 const initialState: BookState = {
@@ -96,9 +100,10 @@ export const bookSlice = createSlice({
             state.error = null
         })
         builder.addCase(getBooks.rejected,(state, action)=>{
-            state.error = action.error.message
-                ? action.error.message
-                : 'Failed to fetch books';
+            state.error={
+                massage: 'Failed to fetch books',
+                payload: action.payload?action.payload:{}
+            };
             state.pending = false;
         })
 
@@ -113,7 +118,10 @@ export const bookSlice = createSlice({
             state.error = null
         })
         builder.addCase(deleteBook.rejected,(state, action)=>{
-            state.error = action.error.message? action.error.message : "Failed to delete books " ;
+            state.error={
+                massage: 'Failed to Delete book',
+                payload: action.payload?action.payload:{}
+            };
             state.pending = false;
         })
 
@@ -128,7 +136,10 @@ export const bookSlice = createSlice({
             state.error = null
         })
         builder.addCase(AddBook.rejected,(state, action)=>{
-            state.error = action.error.message? action.error.message : "Failed to Add book " ;
+            state.error={
+                massage: 'Failed to Add book',
+                payload: action.payload?action.payload:{}
+            };
             state.pending = false;
         })
 
@@ -148,8 +159,10 @@ export const bookSlice = createSlice({
             state.error = null
         })
         builder.addCase(updateBook.rejected,(state, action)=>{
-            state.error = action.error.message? action.error.message : "Failed to update book" ;
-            state.pending = false;
+            state.error={
+                massage: 'Failed to Edite book',
+                payload: action.payload?action.payload:{}
+            };state.pending = false;
         })
     }
 

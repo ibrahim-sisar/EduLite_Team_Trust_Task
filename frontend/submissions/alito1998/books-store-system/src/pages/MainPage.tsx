@@ -2,7 +2,7 @@ import {useDispatch, useSelector} from "react-redux";
 import type {RootState} from "../store/store.ts";
 import DeleteIcon from "../assets/deleteIcon.tsx";
 import {deleteBook, getBooks} from "../store/slices/bookSlice.ts"
-import {useEffect} from "react";
+import {Fragment, useEffect} from "react";
 import type {ThunkDispatch} from "@reduxjs/toolkit";
 import EditeIcon from "../assets/EditeIcon.tsx";
 import { openEditBookModal} from "../store/slices/modalsSlice.ts"
@@ -16,16 +16,19 @@ function MainPage() {
 
     }, [dispatch]);
 
-    if (error) {
+    /*if (error) {
         return (
             <div className="bg-gray-400 h-[86vh] py-5 flex items-center justify-center">
                 <div className="bg-white p-4 rounded-lg shadow-lg">
-                    Error: {error}
+                    Error: {error.massage} <br/> <small>for more details open Console</small>
                 </div>
             </div>
         );
-    }
+    }*/
     return (
+        <Fragment>{error?<div className="bg-red-700 w-full flex items-center justify-center">
+           <p> <strong>Error: {error.massage}</strong> <br/> <small>Check your Internet Connection</small></p>
+        </div>:null}
         <div className="bg-gray-400 h-[88%] py-5">
             <div className="mx-auto bg-[rgba(255,255,255,.4)] rounded-lg w-[85%] overflow-auto max-h-[calc(100vh-120px)]">
                 <table className="table-fixed  w-full">
@@ -81,6 +84,7 @@ function MainPage() {
             </table>
         </div>
         </div>
+        </Fragment>
     )
 }
 
