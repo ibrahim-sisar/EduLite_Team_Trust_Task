@@ -1,0 +1,9 @@
+[build]
+  base    = "frontend/submissions/alito1998/books-store-system"
+  command = "npm run build"
+  publish = "build"
+
+[[redirects]]
+  from    = "/*"
+  to      = "/index.html"
+  status  = 200
