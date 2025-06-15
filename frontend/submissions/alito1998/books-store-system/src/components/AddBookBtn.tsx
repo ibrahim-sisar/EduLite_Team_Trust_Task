@@ -1,5 +1,5 @@
 import AddBookIcon from "../assets/AddBookIcon.tsx";
-import {openAddBook} from"../store/slices/modalsSlice.ts"
+import {openAddBookModal} from "../store/slices/modalsSlice.ts"
 import {useDispatch} from "react-redux";
 
 
@@ -11,7 +11,7 @@ const AddBookBtn = () => {
                     data-modal-target="crud-modal"
                     data-modal-toggle="crud-modal"
                     className="bg-gray-500 hover:bg-gray-600 text-white font-bold p-2  rounded-full shadow-lg"
-                    onClick={()=>{dispatch(openAddBook())}}
+                    onClick={()=>{dispatch(openAddBookModal())}}
             >
                 <AddBookIcon/>
             </button>

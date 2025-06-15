@@ -46,6 +46,21 @@ export const AddBook = createAsyncThunk(
     }
 );
 
+export const updateBook = createAsyncThunk(
+    "books/updateBook",
+    async (state:BookUnit, {rejectWithValue}) => {
+        try {
+            const response = await axios.put(`https://683f66205b39a8039a548708.mockapi.io/EduLite/api/CRUD/${state.id}`,state);
+            return response.data;
+        } catch (err) {
+            if (axios.isAxiosError(err)) {
+                return rejectWithValue(err.response?.data);
+            }
+            return rejectWithValue({ message: 'An unexpected error occurred' });
+        }
+    }
+);
+
 export interface BookUnit {
     id: number ;
     name: string,
@@ -113,7 +128,27 @@ export const bookSlice = createSlice({
             state.error = null
         })
         builder.addCase(AddBook.rejected,(state, action)=>{
-            state.error = action.error.message? action.error.message : "Failed to delete books " ;
+            state.error = action.error.message? action.error.message : "Failed to Add book " ;
+            state.pending = false;
+        })
+
+        //Update Book
+        builder.addCase(updateBook.fulfilled,(state, action)=>{
+            const book = state.books.find((ele) => ele.id === action.payload.id);
+            if (book) {
+                book.name = action.payload.name;
+                book.description = action.payload.description;
+                book.price = action.payload.price;
+            }
+            state.pending = false;
+            state.error = null;
+        })
+        builder.addCase(updateBook.pending,(state)=>{
+            state.pending = true;
+            state.error = null
+        })
+        builder.addCase(updateBook.rejected,(state, action)=>{
+            state.error = action.error.message? action.error.message : "Failed to update book" ;
             state.pending = false;
         })
     }

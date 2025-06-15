@@ -1,34 +1,33 @@
 import {createSlice} from "@reduxjs/toolkit";
 
 export interface ModalState {
-    AddBook: "open"|"close",
-    EditBook: "open"|"close"
+    state: "Add"|"Edit"|"close",
+    id: number|null,
 }
 const initialState:ModalState ={
-    AddBook :"close",
-    EditBook :"close"
+    state: "close",
+    id: null,
 }
 const modalsSlice = createSlice({
     name: "modals",
     initialState,
     reducers:{
-        openAddBook: (state) => {
-            state.AddBook = "open";
-            state.EditBook = "close";
+        openAddBookModal: (state) => {
+            state.state = "Add";
+            state.id = null;
         },
-        closeAddBook: (state) => {
-            state.AddBook = "close";
+        closeModal: (state) => {
+            state.state = "close";
+            state.id = null;
         },
-        openEditBook: (state) => {
-            state.EditBook = "open";
-            state.AddBook = "close";
-        },
-        closeEditBook: (state) => {
-            state.EditBook = "close";
-        }
+        openEditBookModal: (state,action) => {
+            state.state = "Edit";
+            state.id = action.payload;
+            },
+
     }
 
 });
 
-export const {openAddBook,openEditBook,closeEditBook,closeAddBook} = modalsSlice.actions;
+export const {openAddBookModal,openEditBookModal,closeModal} = modalsSlice.actions;
 export default modalsSlice.reducer
