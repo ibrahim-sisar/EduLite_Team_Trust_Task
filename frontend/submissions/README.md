@@ -22,8 +22,8 @@
 
 ### Screen Shots:
 #### Main Page:
-![main page](./Screen%20Shots/main.png)
+![main page](./alito1998/Screen%20Shots/main.png)
 #### Add Book Form:
-![add book Form](./Screen%20Shots/Add%20new%20Book.png)
+![add book Form](./alito1998/Screen%20Shots/Add%20new%20Book.png)
 #### Edite Book:
-![edite book](./Screen%20Shots/Edite%20Book.png)
+![edite book](./alito1998/Screen%20Shots/Edite%20Book.png)
