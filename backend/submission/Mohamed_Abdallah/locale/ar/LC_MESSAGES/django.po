@@ -1,0 +1,107 @@
+# Arabic translations for project.
+# Copyright (C) 2025 THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the project package.
+# Taha, 2025.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: project 1.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-06-14 08:50+0000\n"
+"PO-Revision-Date: 2025-06-14 12:00+0300\n"
+"Last-Translator: Cascade <cascade@windsurf.ai>\n"
+"Language-Team: Arabic <ar@li.org>\n"
+"Language: ar\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
+"&& n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
+
+#: patient/models.py:8
+msgid "Name"
+msgstr "الاسم"
+
+#: patient/models.py:11
+msgid "Birth Date"
+msgstr "تاريخ الميلاد"
+
+#: patient/models.py:14
+msgid "Male"
+msgstr "ذكر"
+
+#: patient/models.py:14
+msgid "Female"
+msgstr "أنثى"
+
+#: patient/models.py:15
+msgid "Gender"
+msgstr "الجنس"
+
+#: patient/models.py:18
+msgid "Parent Phone"
+msgstr "هاتف ولي الأمر"
+
+#: patient/models.py:58 patient/models.py:63
+msgid "Patient"
+msgstr "مريض"
+
+#: patient/models.py:59
+msgid "Patients"
+msgstr "المرضى"
+
+#: patient/models.py:66
+msgid "Doctor"
+msgstr "الطبيب"
+
+#: patient/models.py:69
+msgid "Visit Date"
+msgstr "تاريخ الزيارة"
+
+#: patient/models.py:72
+msgid "Symptoms"
+msgstr "الأعراض"
+
+#: patient/models.py:75
+msgid "Diagnosis"
+msgstr "التشخيص"
+
+#: patient/models.py:78
+msgid "Notes"
+msgstr "ملاحظات"
+
+#: patient/models.py:84 patient/models.py:89
+msgid "Visit"
+msgstr "زيارة"
+
+#: patient/models.py:85
+msgid "Visits"
+msgstr "الزيارات"
+
+#: patient/models.py:92
+msgid "Medication Name"
+msgstr "اسم الدواء"
+
+#: patient/models.py:95
+msgid "Dosage"
+msgstr "الجرعة"
+
+#: patient/models.py:98
+msgid "Duration (Days)"
+msgstr "المدة (أيام)"
+
+#: patient/models.py:104
+msgid "Medication"
+msgstr "دواء"
+
+#: patient/models.py:105
+msgid "Medications"
+msgstr "الأدوية"
+
+#: project/settings.py:117
+msgid "English"
+msgstr "الإنجليزية"
+
+#: project/settings.py:118
+msgid "Arabic"
+msgstr "العربية"

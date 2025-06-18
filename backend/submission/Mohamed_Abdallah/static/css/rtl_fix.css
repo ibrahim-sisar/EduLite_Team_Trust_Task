@@ -1,0 +1,76 @@
+/* Jazzmin RTL Fix */
+
+[dir="rtl"] {
+    .content-wrapper {
+        margin-left: 0 !important;
+        margin-right: 250px !important;
+    }
+
+    .nav-sidebar .nav-item .nav-link p {
+        text-align: right;
+        padding-right: 0;
+    }
+
+    .main-sidebar {
+        left: auto;
+        right: 0;
+    }
+
+    .main-header .navbar-nav.ml-auto {
+        flex-direction: row-reverse;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+    }
+
+    .main-header.navbar {
+        display: flex !important;
+        width: 100%;
+        justify-content: space-between !important;
+        align-items: center;
+        padding-left: 25px;
+        padding-right: 225px;
+    }
+    .main-sidebar .user-panel .image{
+        margin-right: 55px;
+    }
+    .brand-link {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        text-align: left;
+        direction: ltr;
+        margin-left: 0 !important;
+        
+    }
+    .main-sidebar .brand-link {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        text-align: right;
+        direction: rtl;
+        padding-left: 0 !important;
+        padding-right: 1.5rem !important;
+        margin-left: 55px !important;
+    }
+
+    /* ✅ تحريك صورة اللوجو لليسار وإعطاء مسافة يمين */
+    .brand-link img {
+        margin-left: 10px;
+        margin-right: 0 !important;
+        max-height: 35px;
+    }
+    [dir="rtl"] .brand-link img {
+        margin-left: 0.5rem;
+        margin-right: 55px !important;
+        max-height: 35px;
+    }
+    
+    /* ✅ النصوص داخل sidebar RTL ومحاذاة يمين */
+    .main-sidebar .nav-link {
+        direction: rtl;
+        text-align: right;
+        margin-right: 0px !important;
+        width: 100%;
+
+    }
+}
